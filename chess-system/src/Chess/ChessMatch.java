@@ -27,9 +27,14 @@ public class ChessMatch {
         return mat;
     }
 
+    private void placeNewPiece(char column, int row, ChessPiece piece){
+        board.PlacePiece(piece, new ChessPosition(column, row).toPosition());
+
+    }
+
     private void InitialSetup(){
-        board.PlacePiece(new Rook(board, Color.WHITE), new Position(2, 1));
-        board.PlacePiece(new King(board, Color.BLACK), new Position(0,4));
-        board.PlacePiece(new King(board, Color.WHITE), new Position(7,4));
+        placeNewPiece('B', 6, new Rook(board, Color.WHITE));
+        placeNewPiece('E', 8,new King(board, Color.BLACK));
+        placeNewPiece('E', 1 , new King(board, Color.WHITE));
     }
 }
