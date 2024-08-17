@@ -17,14 +17,13 @@ class Programa {
         ChessMatch chessMatch= new ChessMatch();
         List<ChessPiece> captured = new ArrayList<>();
 
-        while (true) {
+        while (!chessMatch.getCheckMate()) {
             try {
                 UI.clearScreen();
                 UI.printMatch(chessMatch, captured);
                 System.out.println();
                 System.out.print("Source: ");
                 ChessPosition source = UI.readChessPosition(sc);
-                System.out.println("Source: " + source);
 
                 boolean[][] possibleMoves = chessMatch.possibleMoves(source);
                 UI.clearScreen();
@@ -33,7 +32,6 @@ class Programa {
                 System.out.println();
                 System.out.print("Target: ");
                 ChessPosition target = UI.readChessPosition(sc);
-                System.out.print("Target: " +target);
 
                 ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
 
@@ -51,5 +49,7 @@ class Programa {
             }
 
         }
+        UI.clearScreen();
+        UI.printMatch(chessMatch, captured);
     }
 }
