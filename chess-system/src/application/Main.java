@@ -8,6 +8,7 @@ import boardgame.Board;
 import boardgame.Position;
 
 import java.lang.annotation.Target;
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -19,17 +20,23 @@ class Programa {
 
         while (true) {
             try {
-                    UI.clearScreen();
-                    UI.printBoard(chessMatch.getPieces());
-                    System.out.println();
-                    System.out.print("Source: ");
-                    ChessPosition source = UI.readChessPosition(sc);
+                UI.clearScreen();
+                UI.printMatch(chessMatch);
+                System.out.println();
+                System.out.print("Source: ");
+                ChessPosition source = UI.readChessPosition(sc);
+                System.out.println("Source: " + source);
 
-                    System.out.println();
-                    System.out.print("Target: ");
-                    ChessPosition target = UI.readChessPosition(sc);
+                boolean[][] possibleMoves = chessMatch.possibleMoves(source);
+                UI.clearScreen();
+                UI.printBoard(chessMatch.getPieces(), possibleMoves);
 
-                    ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
+                System.out.println();
+                System.out.print("Target: ");
+                ChessPosition target = UI.readChessPosition(sc);
+                System.out.print("Target: " +target);
+
+                ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
             }
             catch (ChessException e){
                 System.out.print(e.getMessage());
