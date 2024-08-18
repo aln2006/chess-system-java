@@ -38,6 +38,12 @@ class Programa {
                 if (capturedPiece != null){
                     captured.add(capturedPiece);
                 }
+
+                if (chessMatch.getPromoted() != null){
+                    System.out.println("Enter the letter of piece for promotion (B/N/Q/R): ");
+                    String type = sc.nextLine().toUpperCase();
+                    chessMatch.replacePromotedPiece(type);
+                }
             }
             catch (ChessException e){
                 System.out.print(e.getMessage());
