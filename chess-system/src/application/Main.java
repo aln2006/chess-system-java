@@ -4,10 +4,6 @@ import Chess.ChessException;
 import Chess.ChessMatch;
 import Chess.ChessPiece;
 import Chess.ChessPosition;
-import boardgame.Board;
-import boardgame.Position;
-
-import java.lang.annotation.Target;
 import java.util.*;
 
 class Programa {
@@ -42,6 +38,11 @@ class Programa {
                 if (chessMatch.getPromoted() != null){
                     System.out.println("Enter the letter of piece for promotion (B/N/Q/R): ");
                     String type = sc.nextLine().toUpperCase();
+                    while (!type.equals("B") && !type.equals("N") && !type.equals("R") && !type.equals("Q")) {
+                        System.out.println("Invalid Value !! Enter the letter of piece for promotion (B/N/Q/R): ");
+                        type = sc.nextLine().toUpperCase();
+                    }
+
                     chessMatch.replacePromotedPiece(type);
                 }
             }

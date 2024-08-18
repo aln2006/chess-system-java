@@ -119,9 +119,7 @@ public class ChessMatch {
     }
 
     public ChessPiece replacePromotedPiece(String type){
-        if (promoted == null){
-            throw new IllegalStateException("There`s no piece to be promoted");
-        }
+
         if (!type.equals("B") && !type.equals("N") && !type.equals("R") && !type.equals("Q")){
             throw new InvalidParameterException("Invalid Type for promotion");
         }
